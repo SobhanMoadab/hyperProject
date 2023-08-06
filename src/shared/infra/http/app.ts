@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors';
-// import { v1Router } from './api/v1';
+import { v1Router } from './api/v1';
 import * as dotenv from 'dotenv'
 dotenv.config()
 
@@ -13,10 +13,8 @@ export const app = express();
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors(origin))
-app.use('/', (req, res, next) => {
-    res.send('Hello everyone')
-})
-// app.use('/api/v1', v1Router)
+
+app.use('/api/v1', v1Router)
 
 // app.use((err: any, req: Request, res: Response) => {
 //     if (err instanceof Error) {
