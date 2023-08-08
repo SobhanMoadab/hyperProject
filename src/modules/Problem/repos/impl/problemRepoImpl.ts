@@ -1,5 +1,6 @@
 import { UnexpectedError } from "../../../../shared/core/AppError";
 import { DefineProblemDTO } from "../../usecases/defineProblem/DefineProblemDTO";
+import { ProblemNotFound } from "../../usecases/getProblem/GetProblemErrors";
 import { IProblemRepository, IProblem } from "../IProblemRepository";
 import { Model } from "mongoose";
 
@@ -26,6 +27,18 @@ export class ProblemRepository implements IProblemRepository {
 				return { name: result.name, id: result.id };
 			} else {
 				throw new UnexpectedError("something went wrong");
+			}
+		} catch (error) {
+			throw new UnexpectedError(error);
+		}
+	}
+	async getOne(id: string): Promise<IProblem> {
+		try {
+			const result = await this._problemModel.findById(id);
+			if (result) {
+				return { name: result.name, id: result.id };
+			} else {
+				throw new ProblemNotFound(id);
 			}
 		} catch (error) {
 			throw new UnexpectedError(error);
