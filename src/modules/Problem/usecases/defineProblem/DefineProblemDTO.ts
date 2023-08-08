@@ -1,3 +1,4 @@
 export type DefineProblemDTO = {
-    name: string
+    name: string;
+    
 }

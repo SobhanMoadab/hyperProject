@@ -1,4 +1,4 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
 // const MONGOOSE_USR = process.env.MONGOOSE_USR
 // const MONGOOSE_PWD = process.env.MONGOOSE_PWD
@@ -9,16 +9,16 @@ import mongoose from "mongoose"
 //     MONGOOSE_PWD
 // )}@${MONGOOSE_IP}:${MONGOOSE_PORT}/${MONGOOSE_DATABASE_NAME}`;
 const MONGOOSE_CONFIG = {
-    useNewUrlParser: true,
-    authSource: 'hyperProject',
-    useUnifiedTopology: true,
-}
+	useNewUrlParser: true,
+	authSource: "hyperProject",
+	useUnifiedTopology: true,
+};
 
 mongoose
-    .connect('mongodb://0.0.0.0:27017/hyperProject', MONGOOSE_CONFIG)
-    .then(async (result) => {
-        console.log('Mongoose connected')
-    })
-    .catch((err) => {
-        console.log({ MONGO_ERROR: err })
-    })
+	.connect("mongodb://0.0.0.0:27017/hyperProject", MONGOOSE_CONFIG)
+	.then(async (result) => {
+		console.log("[DATABASE]: Mongoose connected");
+	})
+	.catch((err) => {
+		console.log({ MONGO_ERROR: err });
+	});
