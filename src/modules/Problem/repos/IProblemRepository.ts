@@ -7,4 +7,5 @@ export interface IProblemRepository {
 	remove(id: string): Promise<void>;
 	update({ id, problem }: { id: string; problem: any }): Promise<IProblem>;
 	getOne(id: string): Promise<IProblem>;
+	getList(): Promise<IProblem[]>;
 }

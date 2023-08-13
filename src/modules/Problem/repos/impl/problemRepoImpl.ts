@@ -44,4 +44,12 @@ export class ProblemRepository implements IProblemRepository {
 			throw new UnexpectedError(error);
 		}
 	}
+	async getList(): Promise<IProblem[]> {
+		try {
+			const result: IProblem[] = await this._problemModel.find();
+			return result;
+		} catch (error) {
+			throw new UnexpectedError(error);
+		}
+	}
 }
