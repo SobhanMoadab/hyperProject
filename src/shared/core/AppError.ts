@@ -13,6 +13,17 @@ export class UnexpectedError extends Result<UseCaseError> {
 		return new UnexpectedError(err);
 	}
 }
+export class BadRequestError extends Result<UseCaseError> {
+	public constructor(fields?: Array<string>) {
+		let errorMessage = '';
+		if (fields && fields.length > 0) {
+			errorMessage += ` Invalid fields: ${fields.join(', ')}.`;
+		}
+		super(false, {
+			message: `Bad Request`,
+		} as UseCaseError);
+	}
+}
 export class NotFound404 extends Result<UseCaseError> {
 	public constructor() {
 		super(false, {
